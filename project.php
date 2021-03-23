@@ -4,7 +4,7 @@
     </head>
 
     <body>
-        <h2>Add Movies to your movies list</h2>
+        <h2>Add Movie to your movies list</h2>
         <form method="POST" action="handlerinsert.php"> 
             <input type="hidden" id="insertQueryRequest" name="insertQueryRequest">
             
@@ -17,6 +17,16 @@
         </form>
 
         <hr/>
+        <h2>Delete Movie from your movies list</h2>
+        <form method="POST" action="handlerdelete.php"> 
+            <input type="hidden" id="deleteQueryRequest" name="deleteQueryRequest">
+            
+            Name: <input type="text" name="delName"> <br /><br />
+            Director: <input type="text" name="delDir"> <br /><br />
+
+            <input type="submit" value="Delete Movie" name="deleteSubmit">
+        </form>
+
 
         <!-- <h2>Show all the Movies in List</h2>
         <form method="GET" action="handlerinsert.php">
