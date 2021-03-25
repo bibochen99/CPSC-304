@@ -42,26 +42,23 @@ function goBack() {
             // echo "<br>The $att in the list:<br>";
             echo "<table>";
             // echo "<tr><th>$att</th>";
-            // echo ($att=="count");
-            // count is not work good here
-            
-            if ($att == "count"){
-            echo "<tr>
-            <th>Director</th>
-            <th>Box_office</th>";}
-            else{
-                echo "<tr>
-                <th>Director</th>
-                <th>Box_office</th>";
-            }
+            // echo "<tr><th>ID</th>
+            // <th>Name</th>
+            // <th>Year</th>
+            // <th>Director</th>
+            // <th>ProductID</th>
+            // <th>Price</th>
+            // <th>Location</th>
+            // <th>Theatre Name";
 
             while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
 
                 
-                echo "<tr><td>" . $row[0] . "</td><td>" . $row[1] . "</td><td>" . $row[2] . 
-                "</td><td>" . $row[3] .
-                "</td><td>" . $row[5] 
-
+                echo "<tr><td>" . $row[0] . "</td><td>" . $row[1] . "</td><td>" . $row[2] . "</td><td>" . $row[3] .
+                "</td><td>" . $row[4] .
+                "</td><td>" . $row[6] .
+                "</td><td>" . $row[7] .
+                "</td><td>" . $row[8]
                 ; 
             }
 
@@ -101,28 +98,30 @@ function goBack() {
             $db_conn->close();
         }
 
+             
+
+
+
+
         function handleInsertRequest() {
             global $db_conn;
             // $att = $_POST['insJoinTable'];
             
-            $att = $_POST['insGroupbyTable'];
-            // echo $att;
-            $result = executePlainSQL("SELECT Director,$att(Box_office) 
-            FROM Movie_1 as m, Profitable_Movie as p WHERE m.ID = p.ID Group by Director");
+            $att = $_POST['insDivTable'];
 
-        //     if ($att == "morethan100"){
+
+            $result = executePlainSQL("SELECT Distinct MID FROM Play_at  as p1 Where NOT EXISTS ( SELECT * From Movies_Theatre as m Where NOT EXISTS 
+            (Select * From Play_at  as p2 WHERE p1.MID = p2.MID and m.Name=p2.Name and m.Location = p2.Location))");
+
+
+        //     if ($att == "PopCorn"){
         //     $result = executePlainSQL("SELECT * FROM Movie_1 as m,Peripheral_Merchandise_Sell_Own as p WHERE m.ID = p.MID and Price >100");
         // } else{
         //     $result = executePlainSQL("SELECT * FROM Movie_1 as m,Peripheral_Merchandise_Sell_Own as p WHERE m.ID = p.MID and Price <100");
         // }
-            echo printResult($result,$att);
-        //     if ($att == 'Name'){
-        //     $result = executePlainSQL("SELECT $att FROM Movie_2");
-        // }
-        // else{
-        //     $result = executePlainSQL("SELECT DISTINCT $att FROM Movie_2");
-        // }
-        //     echo printResult($result,$att);
+
+
+            echo printResult($result,"*");
         }
 
 
@@ -150,8 +149,8 @@ function goBack() {
 
         // echo "check";
         // echo $_POST['insTableAll'];
-		if (isset($_POST['insertGB'])){
-            // echo'in150';
+		if (isset($_POST['insertDiv'])){
+
             handlePOSTRequest(); //insert
             // echo 'afterHandle';
         } else if (isset($_GET['countTupleRequest1'])) {

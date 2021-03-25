@@ -150,7 +150,7 @@ function goBack() {
 
         // echo "check";
         // echo $_POST['insTableAll'];
-		if (isset($_POST['insertSubmit'])){
+		if (isset($_POST['insertHav'])){
             // echo'in150';
             handlePOSTRequest(); //insert
             // echo 'afterHandle';

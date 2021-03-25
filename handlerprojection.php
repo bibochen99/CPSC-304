@@ -39,30 +39,12 @@ function goBack() {
         }
 
         function printResult($result, $att) {
-            // echo "<br>The $att in the list:<br>";
+            echo "<br>The $att in the list:<br>";
             echo "<table>";
             // echo "<tr><th>$att</th>";
-            // echo ($att=="count");
-            // count is not work good here
-            
-            if ($att == "count"){
-            echo "<tr>
-            <th>Director</th>
-            <th>Box_office</th>";}
-            else{
-                echo "<tr>
-                <th>Director</th>
-                <th>Box_office</th>";
-            }
 
-            while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-
-                
-                echo "<tr><td>" . $row[0] . "</td><td>" . $row[1] . "</td><td>" . $row[2] . 
-                "</td><td>" . $row[3] .
-                "</td><td>" . $row[5] 
-
-                ; 
+            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                echo "<tr><td>" . $row["Name"] . "</td><td>" . $row["Type"] . "</td><td>" . $row["Director"] . "</td><td>" . $row["Language"]; 
             }
 
             echo "</table>";
@@ -103,26 +85,14 @@ function goBack() {
 
         function handleInsertRequest() {
             global $db_conn;
-            // $att = $_POST['insJoinTable'];
-            
-            $att = $_POST['insGroupbyTable'];
-            // echo $att;
-            $result = executePlainSQL("SELECT Director,$att(Box_office) 
-            FROM Movie_1 as m, Profitable_Movie as p WHERE m.ID = p.ID Group by Director");
-
-        //     if ($att == "morethan100"){
-        //     $result = executePlainSQL("SELECT * FROM Movie_1 as m,Peripheral_Merchandise_Sell_Own as p WHERE m.ID = p.MID and Price >100");
-        // } else{
-        //     $result = executePlainSQL("SELECT * FROM Movie_1 as m,Peripheral_Merchandise_Sell_Own as p WHERE m.ID = p.MID and Price <100");
-        // }
+            $att = $_POST['insTableAll'];
+            if ($att == 'Name'){
+            $result = executePlainSQL("SELECT $att FROM Movie_2");
+        }
+        else{
+            $result = executePlainSQL("SELECT DISTINCT $att FROM Movie_2");
+        }
             echo printResult($result,$att);
-        //     if ($att == 'Name'){
-        //     $result = executePlainSQL("SELECT $att FROM Movie_2");
-        // }
-        // else{
-        //     $result = executePlainSQL("SELECT DISTINCT $att FROM Movie_2");
-        // }
-        //     echo printResult($result,$att);
         }
 
 
@@ -148,16 +118,17 @@ function goBack() {
             }
         }
 
-        // echo "check";
-        // echo $_POST['insTableAll'];
-		if (isset($_POST['insertGB'])){
-            // echo'in150';
-            handlePOSTRequest(); //insert
-            // echo 'afterHandle';
-        } else if (isset($_GET['countTupleRequest1'])) {
+        handlePOSTRequest();
+        // // echo $_POST['insTableAll'];
+		// if (isset($_POST['insertProjection'])){
+        //     echo "check";
+        //     handlePOSTRequest(); //insert
+        //     // echo 'afterHandle';
+        // } else if (isset($_GET['countTupleRequest1'])) {
+        //     echo "check128";
+        //     handleGETRequest(); // show table
+        // }
 
-            handleGETRequest(); // show table
-        }
 
 		?>
         <button onclick="goBack()">Back</button>
