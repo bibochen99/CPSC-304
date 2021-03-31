@@ -95,13 +95,12 @@
           $email = $_POST['email'];
           $phone = $_POST['phone'];
           $name = $_POST['name'];
-          $staffId = $_POST['staffId'];
 
           echo "Update Successfully, You Can Check It Now";
 
 
           // you need the wrap the old name and new name values with single quotations
-          executePlainSQL("UPDATE Customer_Help SET name='" . $name . "', Email='" . $email . "', Staff_ID='" . $staffId . "', Phone_num='" . $phone . "' WHERE id='" . $id . "'");
+          executePlainSQL("UPDATE Customer_Help SET name='" . $name . "', Email='" . $email . "', Phone_num='" . $phone . "' WHERE id='" . $id . "'");
           $db_conn->commit();
       }
 
