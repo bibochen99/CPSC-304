@@ -128,11 +128,8 @@
 
         function handlePOSTRequest() {
             if (connectToDB()) {
-                // echo"before innn";
                 if (array_key_exists('updateQueryRequest', $_POST)) {
-                    // echo"before in154";
                     handleUpdateRequest();
-                    // echo"after in";
                 }
                 
                 disconnectFromDB();
@@ -151,11 +148,9 @@
 
 
 		if (isset($_POST['updateSubmit'])) {
-            // echo 'beforeHandle';
-            handlePOSTRequest(); //insert
-            // echo 'afterHandle';
+            handlePOSTRequest(); 
     } else if (isset($_GET['countTupleRequest1'])) {
-      handleGETRequest(); // show table
+      handleGETRequest(); 
     }
 		?>
 </html>
