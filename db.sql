@@ -258,7 +258,12 @@ INSERT INTO `Customer_Help` (`ID`, `Email`, `Staff_ID`, `Phone_num`, `Name`) VAL
 (7, 'c7@gmail.com', 1, 778963514, 'Daniel'),
 (8, 'c8@gmail.com', 2, 778123635, 'Jermise'),
 (9, 'c9@gmail.com', 3, 778534651, 'Jimmy'),
-(10, 'c10@gmail.com', 4, 778887635, 'Chole');
+(10, 'c10@gmail.com', 4, 778887635, 'Chole'),
+(11, 'c11@gmail.com', 3, 772384832, 'Gary'),
+(12, 'c12@gmail.com', 1, 778832932, 'Wendy'),
+(13, 'c13@gmail.com', 5, 828382432, 'Suffee'),
+(14, 'c14@gmail.com', 2, 827874432, 'Arai'),
+(15, 'c15@gmail.com', 3, 827827232, 'Huky');
 
 CREATE TABLE Evaluates (
 Rating Integer(3),
