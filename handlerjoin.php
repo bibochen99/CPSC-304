@@ -42,10 +42,10 @@ function goBack() {
             // echo "<br>The $att in the list:<br>";
             echo "<table>";
             // echo "<tr><th>$att</th>";
-            echo "<tr><th>ID</th>
+            echo "<tr>
             <th>Name</th>
             <th>Year</th>
-            <th>Director</th>
+
             <th>ProductID</th>
             <th>Price</th>
             <th>Location</th>
@@ -54,7 +54,7 @@ function goBack() {
             while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
 
                 
-                echo "<tr><td>" . $row[0] . "</td><td>" . $row[1] . "</td><td>" . $row[2] . "</td><td>" . $row[3] .
+                echo "<tr><td>"  . $row[1] . "</td><td>" . $row[2] . 
                 "</td><td>" . $row[4] .
                 "</td><td>" . $row[6] .
                 "</td><td>" . $row[7] .
@@ -104,7 +104,7 @@ function goBack() {
             
             $att = $_POST['insJoinPrice'];
             // echo $att;
-            $result = executePlainSQL("SELECT * FROM Movie_1 as m,Peripheral_Merchandise_Sell_Own as p WHERE m.ID = p.MID and Price >$att");
+            $result = executePlainSQL("SELECT * FROM Movie_1 as m,Peripheral_Merchandise_Sell_Own as p WHERE m.ID = p.MID and Year > $att");
 
         //     if ($att == "morethan100"){
         //     $result = executePlainSQL("SELECT * FROM Movie_1 as m,Peripheral_Merchandise_Sell_Own as p WHERE m.ID = p.MID and Price >100");
@@ -144,7 +144,7 @@ function goBack() {
             }
         }
 
-        echo "check";
+        // echo "check";
         // echo $_POST['insTableAll'];
 
 		if (isset($_POST['insertJoin'])){

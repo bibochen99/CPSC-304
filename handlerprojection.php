@@ -50,6 +50,18 @@ function goBack() {
             echo "</table>";
         }
 
+        function printResult1($result) {
+            echo "<br>In the list:<br>";
+            echo "<table>";
+            // echo "<tr><th>$att</th>";
+
+            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                echo "<tr><td>" . $row["Name"] . "</td><td>" . $row["Type"] . "</td><td>" . $row["Director"] . "</td><td>" . $row["Language"]; 
+            }
+
+            echo "</table>";
+        }
+
         function console_log( $data ){
           echo '<script>';
           echo 'console.log('. json_encode( $data ) .')';
@@ -86,13 +98,41 @@ function goBack() {
         function handleInsertRequest() {
             global $db_conn;
             $att = $_POST['insTableAll'];
-            if ($att == 'Name'){
-            $result = executePlainSQL("SELECT $att FROM Movie_2");
-        }
-        else{
-            $result = executePlainSQL("SELECT DISTINCT $att FROM Movie_2");
-        }
-            echo printResult($result,$att);
+
+            $att1 = $_POST['vehicle1'];
+            $att2 = $_POST['vehicle2'];
+            $att3 = $_POST['vehicle3'];
+            $att4 = $_POST['vehicle4'];
+            $attA ="Name,Type,Director,Language" ;
+            if($att1 == NULL ){
+                $attA=str_replace("Name,", '', $attA) ;
+            }
+
+            if($att2 == NULL ){
+                $attA=str_replace("Type,", '', $attA) ;
+            }
+            if($att3 == NULL ){
+                $attA=str_replace("Director,", '', $attA) ;
+            }
+            if($att4 == NULL ){
+                $attA=str_replace(",Language", '', $attA) ;
+                $attA=str_replace("Language", '', $attA) ;
+            }               
+
+            $result = executePlainSQL("SELECT $attA FROM Movie_2");
+            // echo "95";
+            echo printResult1($result);
+
+        //     if ($att == 'Name'){
+        //     $result = executePlainSQL("SELECT $att FROM Movie_2");
+        // }
+        // else{
+        //     $result = executePlainSQL("SELECT DISTINCT $att FROM Movie_2");
+        // }
+
+
+        //     echo printResult($result,$att);
+            
         }
 
 
@@ -117,7 +157,12 @@ function goBack() {
                 disconnectFromDB();
             }
         }
+        // $att = $_POST['vehicle1'];
+        // echo $att;
+        // $att2 = $_POST['vehicle2'];
+        // echo $att2 == NULL;
 
+        // echo gettype($att2);
         handlePOSTRequest();
         // // echo $_POST['insTableAll'];
 		// if (isset($_POST['insertProjection'])){
