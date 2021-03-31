@@ -107,7 +107,7 @@ function goBack() {
         function handleInsertRequest() {
             global $db_conn;
             // $att = $_POST['insJoinTable'];
-            // <!-- find the att(rating) for movie that after year 200 and its director, for each director have at least 2 movie of any year -->
+            // <!-- find the att(rating) for movie that after year 2000 and its director, for each director have at least 2 movie of any year -->
             $att = $_POST['insNestedTable'];
             // echo gettype($att);
             $result = executePlainSQL("            SELECT m2.Director , $att(Rating) 
@@ -116,26 +116,9 @@ function goBack() {
             where  Temp.Director =m2.Director and m2.ID = e2.MID
             Group by Director 
             ");
-            // echo"120";
-            // SELECT m2.Director , min(Rating) 
-            // FROM (select Director from Movie_1 as m1 WHERE m1.Year >2000 group by Director having count(*)>1)
-            // as Temp, Movie_1 as m2, Evaluates as e2
-            // where  Temp.Director =m2.Director and m2.ID = e2.MID
-            // Group by Director 
 
-        //     if ($att == "morethan100"){
-        //     $result = executePlainSQL("SELECT * FROM Movie_1 as m,Peripheral_Merchandise_Sell_Own as p WHERE m.ID = p.MID and Price >100");
-        // } else{
-        //     $result = executePlainSQL("SELECT * FROM Movie_1 as m,Peripheral_Merchandise_Sell_Own as p WHERE m.ID = p.MID and Price <100");
-        // }
             echo printResult($result,$att);
-        //     if ($att == 'Name'){
-        //     $result = executePlainSQL("SELECT $att FROM Movie_2");
-        // }
-        // else{
-        //     $result = executePlainSQL("SELECT DISTINCT $att FROM Movie_2");
-        // }
-        //     echo printResult($result,$att);
+
         }
 
 

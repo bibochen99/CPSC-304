@@ -109,20 +109,8 @@ function goBack() {
             // echo $att;
             $result = executePlainSQL("SELECT Director,min(Box_office) 
             FROM Movie_1 as m, Profitable_Movie as p WHERE m.ID = p.ID Group by Director Having min(Box_office)>=$att");
-
-        //     if ($att == "morethan100"){
-        //     $result = executePlainSQL("SELECT * FROM Movie_1 as m,Peripheral_Merchandise_Sell_Own as p WHERE m.ID = p.MID and Price >100");
-        // } else{
-        //     $result = executePlainSQL("SELECT * FROM Movie_1 as m,Peripheral_Merchandise_Sell_Own as p WHERE m.ID = p.MID and Price <100");
-        // }
             echo printResult($result,$att);
-        //     if ($att == 'Name'){
-        //     $result = executePlainSQL("SELECT $att FROM Movie_2");
-        // }
-        // else{
-        //     $result = executePlainSQL("SELECT DISTINCT $att FROM Movie_2");
-        // }
-        //     echo printResult($result,$att);
+
         }
 
 

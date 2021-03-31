@@ -110,8 +110,12 @@ function goBack() {
             $att = $_POST['insDivTable'];
 
 
-            $result = executePlainSQL("SELECT Distinct MID FROM Play_at  as p1 Where NOT EXISTS ( SELECT * From Movies_Theatre as m Where NOT EXISTS 
-            (Select * From Play_at  as p2 WHERE p1.MID = p2.MID and m.Name=p2.Name and m.Location = p2.Location))");
+            // $result = executePlainSQL("SELECT Distinct MID FROM Play_at  as p1 Where NOT EXISTS ( SELECT * From Movies_Theatre as m Where NOT EXISTS 
+            // (Select * From Play_at  as p2 WHERE p1.MID = p2.MID and m.Name=p2.Name and m.Location = p2.Location))");
+
+    $result = executePlainSQL("SELECT Distinct mv1.Name FROM Play_at as p1 , Movie_1 as mv1 Where mv1.ID = p1.MID 
+    and NOT EXISTS ( SELECT * From Movies_Theatre as m Where NOT EXISTS 
+    (Select * From Play_at  as p2 WHERE p1.MID = p2.MID and m.Name=p2.Name and m.Location = p2.Location))");
 
 
         //     if ($att == "PopCorn"){
