@@ -62,6 +62,7 @@
             $db_conn->close();
         }
 
+        //Select Query
         function handleSelectRequest() {
 
             global $db_conn;
@@ -69,7 +70,6 @@
             $att = $_POST['selTableAll'];
             $att1 = $_POST['selLan'];
             $result = executePlainSQL("SELECT * FROM Movie_2 m WHERE m.Type = \"$att\" AND m.Language=\"$att1\"");
-            echo "SELECT * FROM Movie_2 m WHERE m.Type = $att AND m.Language=$att1";
             echo printResult($result);
         }
 

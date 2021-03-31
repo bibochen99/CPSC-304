@@ -73,14 +73,15 @@
             $db_conn->close();
         }
 
-        function handleInsertRequest() {
+        //Delete Query
+        function handleDeleteRequest() {
 
             global $db_conn;
             $sql = "DELETE FROM Movie_2 WHERE Name = \"" . $_POST["delName"] .  "\" AND Director =\"" . $_POST["delDir"] . "\"";
             if (mysqli_query($db_conn, $sql)) {
                 echo "Deleted successfully";
             } else {
-                echo "Error deleting record: " . mysqli_error($db_conn);
+                echo "Deleted Failed";
             }
             $db_conn->commit();
         }
@@ -96,7 +97,7 @@
         function handlePOSTRequest() {
             if (connectToDB()) {
                 if (array_key_exists('deleteQueryRequest', $_POST)) {
-                    handleInsertRequest();
+                    handleDeleteRequest();
                 }
 
                 disconnectFromDB();

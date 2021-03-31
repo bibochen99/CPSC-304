@@ -53,20 +53,14 @@
         function connectToDB() {
             global $db_conn;
 
-            // echo "before";
             $db_conn= new mysqli("dbserver.students.cs.ubc.ca", "rzhong01", "a38917878", "rzhong01");
             if ($db_conn->connect_error) {
                 debugAlertMessage('Connect Failed' . $db_conn->connect_error);
-                // echo "false";
                 return false;
             } else {
                 debugAlertMessage('Successfully Connected to MYSQL');
-                // echo "true";
                 return true;
             }
-
-            
-
         }
 
         function disconnectFromDB() {
@@ -76,6 +70,7 @@
             $db_conn->close();
         }
 
+        //Insert Query
         function handleInsertRequest() {
 
             global $db_conn;
@@ -87,7 +82,12 @@
             $type = $_POST['insType'];
             $dir = $_POST['insDir'];
             $lan = $_POST['insLan'];
-            $stmt->execute(); 
+            $temp = $stmt->execute();
+            if($temp === TRUE) {
+                echo "Adding successfully";
+            } else{
+                echo "Some error encounter (eg. already have one)";
+            }
             $db_conn->commit();
         }
 
@@ -101,11 +101,8 @@
 
         function handlePOSTRequest() {
             if (connectToDB()) {
-                // echo"before innn";
                 if (array_key_exists('insertQueryRequest', $_POST)) {
-                    // echo"before in154";
                     handleInsertRequest();
-                    // echo"after in";
                 }
 
                 disconnectFromDB();
@@ -124,11 +121,9 @@
 
 
 		if (isset($_POST['insertSubmit'])){
-            // echo 'beforeHandle';
-            handlePOSTRequest(); //insert
-            // echo 'afterHandle';
+            handlePOSTRequest();
         } else if (isset($_GET['countTupleRequest1'])) {
-            handleGETRequest(); // show table
+            handleGETRequest();
         }
 
 		?>
