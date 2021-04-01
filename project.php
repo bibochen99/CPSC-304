@@ -142,7 +142,7 @@
         </form>
         <hr/>
 
-        h2>Search by Your Own Customer ID, Update Information</h2>
+        <h2>Search by Your Own Customer ID, Update Information</h2>
         <form method="POST" action="handleUpdate.php"> <!--refresh page when submitted-->
             <input type="hidden" id="updateQueryRequest" name="updateQueryRequest">
             Your Customer's ID: <input type="text" name="id"> <br /><br /><br /><br /><br /><br />
