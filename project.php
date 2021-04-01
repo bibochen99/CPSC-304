@@ -113,7 +113,7 @@
         <hr/>
 
 
-        <h2>Find the director that have more than the box office</h2>
+        <h2>Find the director that has more than the box office of your input number</h2>
         <br />
         <form method="POST" action="handlerHaving.php"> 
         <input type="hidden" id="insertQueryRequest" name="insertQueryRequest">
