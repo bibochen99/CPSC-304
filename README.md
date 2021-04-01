@@ -1,7 +1,7 @@
 Our project use Mysql in the UBC databases.
 
 Download all the php file and sql file in our Github, then put it into UBC service computer. 
-Put the files into public_html folder and give it promission, then into the folder to give the promission by chmod 755 * for all file.
+Put the files into public_html folder and give it permission, then into the folder to give the permission by chmod 755 * for all file.
 
 To start the mysql:
 1. Go to UBC service computer (remote.students.cs.ubc.ca)
