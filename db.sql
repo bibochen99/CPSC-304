@@ -47,17 +47,37 @@ PRIMARY KEY (Name, Director)
 INSERT INTO `Movie_2` (`Name`, `Type`, `Director`, `Language`) VALUES
 ('AWonderfulDay', 'RomanticFilm', 'Bob', 'English'),
 ('FutureWaterWorld', 'AdventureFilm', 'Micheal', 'English'),
+('FutureFireWorld', 'AdventureFilm', 'Micheal', 'English'),
 ('IronMan', 'ActionFilm', 'Kim', 'English'),
 ('Léon', 'RomanticFilm', 'David', 'French'),
 ('ManchesterByTheSea', 'RomanticFilm', 'Jeff', 'English'),
 ('Monkey\'sComing', 'ComedyFilm', 'Lebron', 'Chinese'),
 ('MonsterHunter', 'ActionFilm', 'Sam', 'English'),
-('RunningMan', 'ComedyFilm', 'Justin', 'Krean'),
+('RunningMan', 'ComedyFilm', 'Justin', 'Korean'),
 ('TomAndJerry', 'ComedyFilm', 'Zac', 'Japanese'),
-('Victoria\'sDream', 'RomanticFilm', 'Jim', 'French');
+('Victoria\'sDream', 'RomanticFilm', 'Jim', 'French'),
 
-INSERT INTO `Movie_2` (`Name`, `Type`, `Director`, `Language`) VALUES
-('FutureFireWorld', 'AdventureFilm', 'Micheal', 'English');
+('ABadDay', 'RomanticFilm', 'Bob', 'French'),
+('FutureWorld', 'ActionFilm', 'Micheal', 'English'),
+('Man', 'ActionFilm', 'Kim', 'English'),
+('Léo', 'RomanticFilm', 'David', 'French'),
+('TheSea', 'ComedyFilm', 'Jeffre', 'English'),
+('Monkey', 'ComedyFilm', 'Leb', 'Chinese'),
+('Monster', 'ActionFilm', 'Samii', 'English'),
+('RunningWomen', 'RomanticFilm', 'Justin', 'Korean'),
+('Tom', 'ComedyFilm', 'Zacob', 'Japanese'),
+('Dream', 'AdventureFilm', 'Jim', 'French'),
+
+('DaybyDay', 'RomanticFilm', 'Bob', 'English'),
+('WaterWorld', 'AdventureFilm', 'Sam', 'English'),
+('IronWoman', 'ActionFilm', 'Kim', 'English'),
+('éon', 'RomanticFilm', 'David', 'French'),
+('Manchester', 'RomanticFilm', 'Jeff', 'English'),
+('Mom\'sComing', 'ComedyFilm', 'Lebron', 'Chinese'),
+('Hunter', 'ActionFilm', 'Micheal', 'English'),
+('RunningChild', 'ComedyFilm', 'Justin', 'Korean'),
+('TomAndJeffery', 'ComedyFilm', 'Zac', 'Japanese'),
+('Sophia\'sDream', 'RomanticFilm', 'Jim', 'French');
 
 
 
@@ -71,7 +91,7 @@ ON DELETE CASCADE
 ON UPDATE CASCADE
 );
 INSERT INTO `Movie_1` (`ID`, `Name`, `Year`, `Director`) VALUES
-(1, 'ManchesterByTheSea', 1997, 'Jeff'),
+(1, 'ManchesterByTheSea', 1995, 'Jeff'),
 (2, 'Léon', 1992, 'David'),
 (3, 'FutureWaterWorld', 2007, 'Micheal'),
 (4, 'TomAndJerry', 2017, 'Zac'),
@@ -80,11 +100,30 @@ INSERT INTO `Movie_1` (`ID`, `Name`, `Year`, `Director`) VALUES
 (7, 'RunningMan', 2019, 'Justin'),
 (8, 'Victoria\'sDream', 2011, 'Jim'),
 (9, 'Monkey\'sComing', 2016, 'Lebron'),
-(10, 'IronMan', 2019, 'Kim');
+(10, 'IronMan', 2019, 'Kim'),
 
-INSERT INTO `Movie_1` (`ID`, `Name`, `Year`, `Director`) VALUES
-(11, 'FutureFireWorld', 2007, 'Micheal')
-;
+(11, 'TheSea', 1995, 'Jeffre'),
+(12, 'Léo', 2001, 'David'),
+(13, 'FutureWorld', 2020, 'Micheal'),
+(14, 'Tom', 2010, 'Zacob'),
+(15, 'Monster', 2002, 'Samii'),
+(16, 'ABadDay', 1935, 'Bob'),
+(17, 'RunningWomen', 1988, 'Justin'),
+(18, 'Dream', 2001, 'Jim'),
+(19, 'Monkey', 2021, 'Leb'),
+(20, 'Man', 2005, 'Kim'),
+
+(21, 'Manchester', 1967, 'Jeff'),
+(22, 'éon', 2002, 'David'),
+(23, 'WaterWorld', 1999, 'Sam'),
+(24, 'TomAndJeffery', 2000, 'Zac'),
+(25, 'Hunter', 2021, 'Micheal'),
+(26, 'DayByDay', 1949, 'Bob'),
+(27, 'RunningChild', 2009, 'Justin'),
+(28, 'Sophia\'sDream', 2011, 'Jim'),
+(29, 'Mom\'sComing', 2016, 'Lebron'),
+(30, 'IronWoman', 2008, 'Kim'),
+(31, 'FutureFireWorld', 2009, 'Micheal');
 
 CREATE TABLE Profitable_Movie (
 ID Integer(10) PRIMARY KEY,
@@ -98,7 +137,22 @@ INSERT INTO `Profitable_Movie` (`ID`, `Box_office`) VALUES
 (2, 2000000000),
 (3, 300000000),
 (4, 200000000),
-(5, 300000000);
+(5, 300000000),
+(16, 150000000),
+(17, 270000000),
+(18, 561000000),
+(19, 278900000),
+(20, 500250000),
+(21, 500180000),
+(22, 204805000),
+(23, 301027500),
+(24, 200526880),
+(25, 300253300),
+(26, 500044400),
+(27, 200371520),
+(28, 300002510),
+(29, 571820000),
+(30, 745600000);
 
 CREATE TABLE Non_Profitable_Movie (
 ID Integer(10) PRIMARY KEY,
@@ -112,7 +166,12 @@ INSERT INTO `Non_Profitable_Movie` (`ID`, `Donation`) VALUES
 (7, 70000000),
 (8, 55000000),
 (9, 65000000),
-(10, 35000000);
+(10, 35000000),
+(11, 50000000),
+(12, 2000000),
+(13, 30000000),
+(14, 20000000),
+(15, 30000000);
 
 
 
@@ -180,14 +239,29 @@ INSERT INTO `Play_at` (`Location`, `Name`, `MID`) VALUES
 ('2333 Robinson Rd', 'Ocean Theatre', 7),
 ('1211 New York St', 'Shelton Theatre', 5),
 ('1928 Steve St', 'Shelton Theatre', 3),
-('1928 Steve St', 'Shelton Theatre', 9);
-
-INSERT INTO `Play_at` (`Location`, `Name`, `MID`) VALUES
+('1928 Steve St', 'Shelton Theatre', 9),
 ('1032 Champlain St', 'Champlain Theatre', 1),
 ('1928 Steve St', 'Shelton Theatre', 1),
 ('1545 Melform Rd', 'Champlain Theatre', 1),
 ('1211 New York St', 'Shelton Theatre', 1),
-('1211 New York St', 'Ocean Theatre', 1);
+('1211 New York St', 'Ocean Theatre', 1),
+('1032 Champlain St', 'Champlain Theatre', 3),
+('2333 Robinson Rd', 'Ocean Theatre', 3),
+('1545 Melform Rd', 'Champlain Theatre', 3),
+('1211 New York St', 'Shelton Theatre', 3),
+('1211 New York St', 'Ocean Theatre', 3),
+('2333 Robinson Rd', 'Ocean Theatre', 11),
+('1032 Champlain St', 'Champlain Theatre', 11),
+('1928 Steve St', 'Shelton Theatre', 11),
+('1545 Melform Rd', 'Champlain Theatre', 11),
+('1211 New York St', 'Shelton Theatre', 11),
+('1211 New York St', 'Ocean Theatre', 11),
+('2333 Robinson Rd', 'Ocean Theatre', 15),
+('1032 Champlain St', 'Champlain Theatre', 15),
+('1928 Steve St', 'Shelton Theatre', 15),
+('1545 Melform Rd', 'Champlain Theatre', 15),
+('1211 New York St', 'Shelton Theatre', 15),
+('1211 New York St', 'Ocean Theatre', 15);
 
 
 CREATE TABLE Peripheral_Merchandise_Sell_Own (
@@ -209,7 +283,12 @@ INSERT INTO `Peripheral_Merchandise_Sell_Own` (`MID`, `Product_ID`, `Price`, `Lo
 (7, 3, 80, '1032 Champlain St', 'Champlain Theatre'),
 (8, 3, 80, '1928 Steve St', 'Shelton Theatre'),
 (9, 4, 150, '1545 Melform Rd', 'Champlain Theatre'),
-(10, 5, 400, '1211 New York St', 'Ocean Theatre');
+(10, 5, 400, '1211 New York St', 'Ocean Theatre'),
+(11, 7, 8, '1032 Champlain St', 'Champlain Theatre'),
+(12, 2, 200, '2333 Robinson Rd', 'Ocean Theatre'),
+(13, 6, 150, '1545 Melform Rd', 'Champlain Theatre'),
+(14, 5, 16, '1928 Steve St', 'Shelton Theatre'),
+(15, 0, 200, '1211 New York St', 'Ocean Theatre');
 
 CREATE TABLE Provide (
 SName VarChar(20),
